@@ -1,0 +1,84 @@
+input CreateUserInput {
+  firstName: String
+  lastName: String
+  email: String
+  phone: Int
+}
+
+type CreateUser {
+  firstName: String
+  lastName: String
+  email: String
+  phone: Int
+}
+
+input UpdateUserInput {
+  id: Int
+  lastName: String
+  email: String
+  phone: Int
+}
+
+type UpdateUser {
+   lastName:String
+   email: String
+   phone: Int
+}
+
+type DeleteUser {
+  firstName:String
+  lastName:String
+  email:String
+  phone:Int
+}
+enum OrgSize {
+  SMALL
+  MEDIUM
+  LARGE
+}
+
+enum Industry {
+  HEALTHCARE
+  AGRICULTURE
+  AUTOMOBILE
+  BANKING
+  CONSTRUCTION
+  EDUCATION
+}
+
+input CreateOrganizationInput {
+  orgName: String
+  industry: Industry
+  orgSize: OrgSize
+}
+
+type CreateOrganization {
+  orgName: String
+  industry: Industry
+  orgSize: OrgSize
+}
+
+input CreateOrgUserInput {
+   id: Int
+   userId: Int
+   OrgId: Int
+}
+
+type CreateOrgUser {
+   id: Int
+   userId: Int
+   OrgId: Int
+}
+
+type Query {
+   getAllUsers: [CreateUser]
+   getAllOrganizations: [CreateOrganization]
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput): CreateUser
+  updateUser(updateUserInput: UpdateUserInput ):UpdateUser
+  deleteUser(firstName: String!):DeleteUser
+  createOrganization(createOrganizationInput: CreateOrganizationInput): CreateOrganization
+  createOrgUser(createOrgUserInput: CreateOrgUserInput): CreateOrgUser
+}
