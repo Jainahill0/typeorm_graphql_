@@ -24,22 +24,22 @@ export enum Industry {
 }
 
 export interface CreateUserInput {
-    firstName?: Nullable<string>;
-    lastName?: Nullable<string>;
-    email?: Nullable<string>;
+    firstName: string;
+    lastName: string;
+    email: string;
     phone?: Nullable<number>;
 }
 
 export interface UpdateUserInput {
-    firstName?: Nullable<string>;
-    lastName?: Nullable<string>;
-    email?: Nullable<string>;
+    firstName: string;
+    lastName: string;
+    email: string;
     phone?: Nullable<number>;
 }
 
 export interface CreateOrganizationInput {
-    orgName?: Nullable<string>;
-    industry?: Nullable<Industry>;
+    orgName: string;
+    industry: Industry;
     orgSize?: Nullable<OrgSize>;
     firstName?: Nullable<string>;
 }
@@ -50,29 +50,29 @@ export interface CreateOrgUserInput {
 }
 
 export interface CreateUser {
-    firstName?: Nullable<string>;
-    lastName?: Nullable<string>;
-    email?: Nullable<string>;
+    firstName: string;
+    lastName: string;
+    email: string;
     phone?: Nullable<number>;
 }
 
 export interface UpdateUser {
-    firstName?: Nullable<string>;
-    lastName?: Nullable<string>;
-    email?: Nullable<string>;
+    firstName: string;
+    lastName: string;
+    email: string;
     phone?: Nullable<number>;
 }
 
 export interface DeleteUser {
-    firstName?: Nullable<string>;
-    lastName?: Nullable<string>;
-    email?: Nullable<string>;
+    firstName: string;
+    lastName: string;
+    email: string;
     phone?: Nullable<number>;
 }
 
 export interface CreateOrganization {
-    orgName?: Nullable<string>;
-    industry?: Nullable<Industry>;
+    orgName: string;
+    industry: Industry;
     orgSize?: Nullable<OrgSize>;
     firstName?: Nullable<string>;
 }

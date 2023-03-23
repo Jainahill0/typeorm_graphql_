@@ -1,4 +1,3 @@
-
 export type CreateUserInput = {
     id: number;
     firstName: string;

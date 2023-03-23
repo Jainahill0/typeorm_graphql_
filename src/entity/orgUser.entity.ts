@@ -7,12 +7,12 @@ export class OrgUser {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User)
-  @JoinColumn({name:'user_name' ,referencedColumnName:'firstName'})
-  user: User;
-
-  @ManyToOne(() => Organization)
-  @JoinColumn({name:'org_name', referencedColumnName:'orgName'})
+  @ManyToOne(() => Organization, { onDelete: 'CASCADE', nullable: false, eager: true })
+  @JoinColumn({ name: 'organization_name', referencedColumnName: 'orgName' })
   organization: Organization;
 
+  @ManyToOne(() => User, { onDelete: 'CASCADE', nullable: false, eager: true })
+  @JoinColumn({ name: 'firstName', referencedColumnName: 'firstName' })
+  user: User;
 }
+

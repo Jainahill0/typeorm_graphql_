@@ -1,22 +1,23 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity()
 export class Organization {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-   @PrimaryGeneratedColumn()
-   id: number;
+  @Column('varchar')
+  @Index()
+  orgName!: string;
 
-   @Column('varchar')
-   orgName: string;
+  @Column('varchar')
+  industry!: string;
 
-   @Column('varchar')
-   industry: string;
+  @Column('varchar',)
+  orgSize?: string;
 
-   @Column('varchar')
-   orgSize: string;
+  @ManyToOne(() => User,user => user.firstName)
+  @JoinColumn({ name: 'firstName', referencedColumnName: 'firstName' })
+  firstName: User;
 
-   @ManyToOne(() => User, user => user.firstName)
-   @JoinColumn({name:'user_name',referencedColumnName:'firstName'})
-   firstName:User;                                                                                                
 }

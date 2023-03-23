@@ -1,21 +1,20 @@
-import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-
+import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-   @PrimaryGeneratedColumn()
-   id: number;
+  @Column('varchar',)
+  @Index()
+  firstName!: string;
 
-   @Column('varchar')
-   firstName!: string;
+  @Column('varchar',)
+  lastName!: string;
 
-   @Column('varchar')
-   lastName: string;
+  @Column('varchar')
+  email!: string;
 
-   @Column('varchar')
-   email: string;
-
-   @Column('varchar')
-   phone: number;
+  @Column('varchar')
+  phone?: number;
 }
