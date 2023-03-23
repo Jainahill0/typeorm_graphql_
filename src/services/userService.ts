@@ -38,14 +38,18 @@ export class UserService {
     return updatedUser;
   }
 
-  async remove(firstName: string): Promise<User> {
+  async deleteUser(firstName: string): Promise<string> {
     const user = await this.userRepository.findOne({
       where: {
         firstName: firstName,
       },
+      
     });
-    await this.userRepository.remove(user);
-    return user;
+    if (!user) {
+      return 'User not found';
+    }
+    await this.userRepository.delete(user);
+    return 'User Deleted';
   }
 
   async findAll(): Promise<User[]> {

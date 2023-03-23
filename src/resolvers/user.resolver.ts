@@ -21,10 +21,10 @@ export class UserResolver {
     }
     
     @Mutation(()=> User)
-    deleteUser(@Args('firstName', { type: ()=> String})
+    deleteUser(@Args('firstName')
     firstName: string)
     {
-        return this.usersService.remove(firstName);
+        return this.usersService.deleteUser(firstName);
     }
 
     @Query()

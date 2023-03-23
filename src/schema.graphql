@@ -63,14 +63,25 @@ type CreateOrganization {
 
 }
 
-input CreateOrgUserInput {
-   firstName:String
-   orgName:String
+input UpdateOrgInput {
+  orgName: String!
+  industry: Industry!
+  orgSize: OrgSize
+  firstName: String
 }
 
-type CreateOrgUser {
-   firstName:String
-   orgName:String
+type UpdateOrg {
+  orgName: String!
+  industry: Industry!
+  orgSize: OrgSize
+  firstName: String
+}
+
+type DeleteOrg {
+  orgName: String!
+  industry: Industry!
+  orgSize: OrgSize
+  firstName: String
 }
 
 type Query {
@@ -83,5 +94,6 @@ type Mutation {
   updateUser(updateUserInput: UpdateUserInput ):UpdateUser
   deleteUser(firstName: String!):DeleteUser
   createOrganization(createOrganizationInput: CreateOrganizationInput): CreateOrganization
-  createOrgUser(createOrgUserInput: CreateOrgUserInput): CreateOrgUser
+  updateOrganization(updateOrgInput: UpdateOrgInput ): UpdateOrg
+  deleteOrg(orgName: String!):String
 }

@@ -44,9 +44,11 @@ export interface CreateOrganizationInput {
     firstName?: Nullable<string>;
 }
 
-export interface CreateOrgUserInput {
+export interface UpdateOrgInput {
+    orgName: string;
+    industry: Industry;
+    orgSize?: Nullable<OrgSize>;
     firstName?: Nullable<string>;
-    orgName?: Nullable<string>;
 }
 
 export interface CreateUser {
@@ -77,9 +79,18 @@ export interface CreateOrganization {
     firstName?: Nullable<string>;
 }
 
-export interface CreateOrgUser {
+export interface UpdateOrg {
+    orgName: string;
+    industry: Industry;
+    orgSize?: Nullable<OrgSize>;
     firstName?: Nullable<string>;
-    orgName?: Nullable<string>;
+}
+
+export interface DeleteOrg {
+    orgName: string;
+    industry: Industry;
+    orgSize?: Nullable<OrgSize>;
+    firstName?: Nullable<string>;
 }
 
 export interface IQuery {
@@ -92,7 +103,8 @@ export interface IMutation {
     updateUser(updateUserInput?: Nullable<UpdateUserInput>): Nullable<UpdateUser> | Promise<Nullable<UpdateUser>>;
     deleteUser(firstName: string): Nullable<DeleteUser> | Promise<Nullable<DeleteUser>>;
     createOrganization(createOrganizationInput?: Nullable<CreateOrganizationInput>): Nullable<CreateOrganization> | Promise<Nullable<CreateOrganization>>;
-    createOrgUser(createOrgUserInput?: Nullable<CreateOrgUserInput>): Nullable<CreateOrgUser> | Promise<Nullable<CreateOrgUser>>;
+    updateOrganization(updateOrgInput?: Nullable<UpdateOrgInput>): Nullable<UpdateOrg> | Promise<Nullable<UpdateOrg>>;
+    deleteOrg(orgName: string): Nullable<string> | Promise<Nullable<string>>;
 }
 
 type Nullable<T> = T | null;
