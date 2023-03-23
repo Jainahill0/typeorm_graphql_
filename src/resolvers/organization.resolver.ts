@@ -4,13 +4,12 @@ import { Organization } from "src/entity/organization.entity";
 import { OrganizationService } from "src/services/organization.Service";
 
 
-
 @Resolver(() => Organization)
 export class OrganizationResolver {
     constructor(  private readonly organizationService : OrganizationService) {}
 
     @Mutation()
-    createOrganization( @Args('createUserInput') createOrganizationInput :  CreateOrganizationInput ) {        
+    createOrganization( @Args('createOrganizationInput') createOrganizationInput : CreateOrganizationInput ) {        
         return this.organizationService.create(createOrganizationInput);
     }
 
@@ -18,4 +17,5 @@ export class OrganizationResolver {
     getAllOrganizations():Promise<Organization[]> {
         return this.organizationService.findAll();
     }
+
 }

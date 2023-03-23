@@ -31,7 +31,7 @@ export interface CreateUserInput {
 }
 
 export interface UpdateUserInput {
-    id?: Nullable<number>;
+    firstName?: Nullable<string>;
     lastName?: Nullable<string>;
     email?: Nullable<string>;
     phone?: Nullable<number>;
@@ -41,12 +41,12 @@ export interface CreateOrganizationInput {
     orgName?: Nullable<string>;
     industry?: Nullable<Industry>;
     orgSize?: Nullable<OrgSize>;
+    firstName?: Nullable<string>;
 }
 
 export interface CreateOrgUserInput {
-    id?: Nullable<number>;
-    userId?: Nullable<number>;
-    OrgId?: Nullable<number>;
+    firstName?: Nullable<string>;
+    orgName?: Nullable<string>;
 }
 
 export interface CreateUser {
@@ -57,6 +57,7 @@ export interface CreateUser {
 }
 
 export interface UpdateUser {
+    firstName?: Nullable<string>;
     lastName?: Nullable<string>;
     email?: Nullable<string>;
     phone?: Nullable<number>;
@@ -73,12 +74,12 @@ export interface CreateOrganization {
     orgName?: Nullable<string>;
     industry?: Nullable<Industry>;
     orgSize?: Nullable<OrgSize>;
+    firstName?: Nullable<string>;
 }
 
 export interface CreateOrgUser {
-    id?: Nullable<number>;
-    userId?: Nullable<number>;
-    OrgId?: Nullable<number>;
+    firstName?: Nullable<string>;
+    orgName?: Nullable<string>;
 }
 
 export interface IQuery {

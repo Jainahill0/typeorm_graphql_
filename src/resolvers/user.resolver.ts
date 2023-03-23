@@ -15,10 +15,9 @@ export class UserResolver {
 
     @Mutation()
     async updateUser(
-        @Args('Id') id: number,
         @Args('updateUserInput') updateUserInput :
     UpdateUser) {
-        return this.usersService.update(id,updateUserInput)
+        return this.usersService.update(updateUserInput)
     }
     
     @Mutation(()=> User)

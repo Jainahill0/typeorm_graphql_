@@ -4,6 +4,7 @@ import { Organization } from './entity/organization.entity';
 import { OrgUser } from './entity/orgUser.entity';
 import { User } from './entity/user.entity';
 import { OrganizationModule } from './modules/organization.module';
+import { OrgUserModule } from './modules/orgUser.module';
 import { UserModule } from './modules/user.module';
 
 @Module({
@@ -19,7 +20,8 @@ import { UserModule } from './modules/user.module';
       entities: [User,Organization,OrgUser]
     }),
     UserModule,
-    OrganizationModule
+    OrganizationModule,
+    OrgUserModule
   ],
   controllers: [],
   providers: [],

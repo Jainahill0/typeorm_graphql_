@@ -1,6 +1,6 @@
 
 
 export type CreateOrgUserInput = {
-    userId:number;
-    orgId: number;
+    firstName:string;
+    orgName: string;
 }

@@ -17,14 +17,27 @@ export class UserService {
             return  user;
           }
         
-        async update( Id: number, updateUserInput: UpdateUser): Promise<User> {
-            const user = await  this.userRepository.findOne({});
-            Object.assign(user, updateUserInput);
-            return this.userRepository.save(user);
+        async update(updateUserInput: UpdateUser): Promise<User> {
+            const user = await  this.userRepository.findOne({
+              where: {
+                firstName:updateUserInput.firstName
+              },
+            });
+            user.lastName = updateUserInput.lastName?? user.lastName;
+            user.email = updateUserInput.email?? user.email;
+            user.phone = updateUserInput.phone?? user.phone;
+
+            const updatedUser = await this.userRepository.save(user)
+
+            return updatedUser
           }
  
         async remove(firstName: string): Promise<User> {
-            const user = await this.userRepository.findOne({});
+            const user = await this.userRepository.findOne({
+              where: {
+                firstName: firstName
+              },
+            });
             await this.userRepository.remove(user);
             return user;
           }

@@ -1,11 +1,10 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { OrgUser } from "./orgUser.entity";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity()
 export class Organization {
 
-   @PrimaryGeneratedColumn('increment', { type:'int'})
+   @PrimaryGeneratedColumn()
    id: number;
 
    @Column('varchar')
@@ -17,11 +16,7 @@ export class Organization {
    @Column('varchar')
    orgSize: string;
 
-   @ManyToOne(() => User,(user) => user.organization)
-   @JoinColumn()
-   user:User[];
-
-   @OneToMany(() => OrgUser , orgUser => orgUser.user )
-   orgUsers:   OrgUser[];
-
+   @ManyToOne(() => User, user => user.firstName)
+   @JoinColumn({name:'user_name',referencedColumnName:'firstName'})
+   firstName:User;                                                                                                
 }

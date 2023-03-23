@@ -13,13 +13,14 @@ type CreateUser {
 }
 
 input UpdateUserInput {
-  id: Int
+  firstName: String
   lastName: String
   email: String
   phone: Int
 }
 
 type UpdateUser {
+   firstName:String
    lastName:String
    email: String
    phone: Int
@@ -31,6 +32,7 @@ type DeleteUser {
   email:String
   phone:Int
 }
+
 enum OrgSize {
   SMALL
   MEDIUM
@@ -50,24 +52,25 @@ input CreateOrganizationInput {
   orgName: String
   industry: Industry
   orgSize: OrgSize
+  firstName: String
 }
 
 type CreateOrganization {
   orgName: String
   industry: Industry
   orgSize: OrgSize
+  firstName: String
+
 }
 
 input CreateOrgUserInput {
-   id: Int
-   userId: Int
-   OrgId: Int
+   firstName:String
+   orgName:String
 }
 
 type CreateOrgUser {
-   id: Int
-   userId: Int
-   OrgId: Int
+   firstName:String
+   orgName:String
 }
 
 type Query {

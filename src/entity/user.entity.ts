@@ -1,11 +1,10 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Organization } from "./organization.entity";
-import { OrgUser } from "./orgUser.entity";
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+
 
 @Entity()
 export class User {
 
-   @PrimaryGeneratedColumn('increment', { type:'int'})
+   @PrimaryGeneratedColumn()
    id: number;
 
    @Column('varchar')
@@ -19,10 +18,4 @@ export class User {
 
    @Column('varchar')
    phone: number;
-
-   @OneToMany(() => Organization , (organization) => organization.user)
-   organization: Organization[];
-
-   @OneToMany(() => OrgUser , orgUser => orgUser.organization)
-   orgUser : OrgUser[];
 }

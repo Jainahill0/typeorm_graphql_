@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Organization } from 'src/entity/organization.entity';
-import { OrganizationResolver } from 'src/resolvers/organization.resolver';
-import { OrganizationService } from 'src/services/organization.Service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo/dist/drivers';
 import { join } from 'path';
+import { OrgUser } from 'src/entity/orgUser.entity';
+import { OrgUserResolver } from 'src/resolvers/orgUser.resolver';
+import { OrgUserService } from 'src/services/orgUserService';
 import { User } from 'src/entity/user.entity';
+import { Organization } from 'src/entity/organization.entity';
 
 @Module({
     imports: [
@@ -18,8 +19,8 @@ import { User } from 'src/entity/user.entity';
             path: join(process.cwd(), 'src/graphql.ts'),
           },
         }),
-        TypeOrmModule.forFeature([Organization,User]),
+        TypeOrmModule.forFeature([OrgUser,User,Organization]),
       ],
-  providers: [OrganizationResolver,OrganizationService],
+  providers: [OrgUserResolver,OrgUserService],
 })
-export class OrganizationModule {}
+export class OrgUserModule {}

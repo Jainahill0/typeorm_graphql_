@@ -1,4 +1,4 @@
-import { Entity, JoinTable, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, JoinColumn, ManyToOne,PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './user.entity';
 import { Organization } from './organization.entity';
 
@@ -7,12 +7,12 @@ export class OrgUser {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User , user => user.orgUser)
-  @JoinTable()
+  @ManyToOne(() => User)
+  @JoinColumn({name:'user_name' ,referencedColumnName:'firstName'})
   user: User;
 
-  @ManyToOne(() => Organization , organization => organization.orgUsers)
-  @JoinTable()
-  organization: Organization
+  @ManyToOne(() => Organization)
+  @JoinColumn({name:'org_name', referencedColumnName:'orgName'})
+  organization: Organization;
 
 }

@@ -3,24 +3,40 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { OrgUser } from 'src/entity/orgUser.entity';
 import { CreateOrgUserInput } from 'src/dto/orgUser.Dto';
+import { Organization } from 'src/entity/organization.entity';
+import { User } from 'src/entity/user.entity';
+import { pick } from "lodash";
 
 @Injectable()
 export class OrgUserService {
-  userRepository: any;
-  organizationRepository: any;
   constructor(
     @InjectRepository(OrgUser)
     private readonly orgUserRepository: Repository<OrgUser>,
+    @InjectRepository(User)
+        private readonly  userRepository:Repository<User>,
+    @InjectRepository(Organization)
+      private readonly organizationRepository:Repository<Organization>
   ) {}
 
   async create(createOrgUserInput: CreateOrgUserInput): Promise<OrgUser> {
-    const { userId, orgId } = createOrgUserInput;
 
-    const orgUser = new OrgUser();
-    orgUser.user = await this.userRepository.findOne(userId);
-    orgUser.organization = await this.organizationRepository.findOne(orgId);
+    const existingUser =await this.userRepository.findOne({
+      where: { firstName:createOrgUserInput.firstName }
+    })
+    const createUser = await this.orgUserRepository.save({
+      ...pick(createOrgUserInput, [
+        'orgName',
+        'industry',
+        'orgSize',
+        'firstName',
+      ]),
+      organization:existingUser
+    })
+    const orgUser = await this.orgUserRepository.save({
+      organization:createUser,
+      user:existingUser
+    })
+    return createUser;
 
-
-    return this.orgUserRepository.save(orgUser);
   }
 }
