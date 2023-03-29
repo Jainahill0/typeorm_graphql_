@@ -13,11 +13,11 @@ import { UserModule } from './modules/user.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type:'mysql',
+      type:'postgres',
       host:'localhost',
-      port:3306,
-      username:'root',
-      password: 'Jain1700',
+      port:5432,
+      username:'postgres',
+      password: '1234567890',
       database:'jain1',
       synchronize:true,
       logging:false,

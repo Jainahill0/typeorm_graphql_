@@ -46,6 +46,7 @@ enum Industry {
   BANKING
   CONSTRUCTION
   EDUCATION
+  OTHER
 }
 
 input CreateOrganizationInput {
@@ -92,7 +93,7 @@ type Query {
 type Mutation {
   createUser(createUserInput: CreateUserInput): CreateUser
   updateUser(updateUserInput: UpdateUserInput ):UpdateUser
-  deleteUser(firstName: String!):DeleteUser
+  deleteUser(firstName: String!):String
   createOrganization(createOrganizationInput: CreateOrganizationInput): CreateOrganization
   updateOrganization(updateOrgInput: UpdateOrgInput ): UpdateOrg
   deleteOrg(orgName: String!):String

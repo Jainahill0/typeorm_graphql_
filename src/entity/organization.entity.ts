@@ -6,7 +6,7 @@ export class Organization {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('varchar')
+  @Column('varchar',{unique:true})
   @Index()
   orgName!: string;
 

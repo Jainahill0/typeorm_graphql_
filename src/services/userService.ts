@@ -47,6 +47,7 @@ export class UserService {
     });
     if (!user) {
       return 'User not found';
+      
     }
     await this.userRepository.delete(user);
     return 'User Deleted';

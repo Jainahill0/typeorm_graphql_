@@ -1,11 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { OrgUser } from "./orgUser.entity";
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('varchar',)
+  @Column('varchar',{unique:true})
   @Index()
   firstName!: string;
 
@@ -17,4 +18,7 @@ export class User {
 
   @Column('varchar')
   phone?: number;
+
+  @OneToMany(()=> OrgUser , orgUser => orgUser.user)
+  orgUser: OrgUser
 }

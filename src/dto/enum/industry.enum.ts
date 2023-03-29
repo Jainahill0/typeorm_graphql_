@@ -6,4 +6,5 @@ export enum Industry {
   BANKING = 'BANKING',
   CONSTRUCTION = 'CONSTRUCTION',
   EDUCATION = 'EDUCATION',
+  OTHER = 'OTHER'
 }

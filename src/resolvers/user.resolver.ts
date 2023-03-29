@@ -6,7 +6,7 @@ import { CreateUserInput } from "src/dto/userDto";
 
 @Resolver(() => User)
 export class UserResolver {
-    constructor(  private readonly usersService : UserService) {    }
+    constructor(  private readonly usersService : UserService) { }
 
     @Mutation()
     createUser( @Args('createUserInput') createUserInput :  CreateUserInput ) {        

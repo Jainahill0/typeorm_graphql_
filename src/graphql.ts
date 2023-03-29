@@ -20,7 +20,8 @@ export enum Industry {
     AUTOMOBILE = "AUTOMOBILE",
     BANKING = "BANKING",
     CONSTRUCTION = "CONSTRUCTION",
-    EDUCATION = "EDUCATION"
+    EDUCATION = "EDUCATION",
+    OTHER = "OTHER"
 }
 
 export interface CreateUserInput {
@@ -101,7 +102,7 @@ export interface IQuery {
 export interface IMutation {
     createUser(createUserInput?: Nullable<CreateUserInput>): Nullable<CreateUser> | Promise<Nullable<CreateUser>>;
     updateUser(updateUserInput?: Nullable<UpdateUserInput>): Nullable<UpdateUser> | Promise<Nullable<UpdateUser>>;
-    deleteUser(firstName: string): Nullable<DeleteUser> | Promise<Nullable<DeleteUser>>;
+    deleteUser(firstName: string): Nullable<string> | Promise<Nullable<string>>;
     createOrganization(createOrganizationInput?: Nullable<CreateOrganizationInput>): Nullable<CreateOrganization> | Promise<Nullable<CreateOrganization>>;
     updateOrganization(updateOrgInput?: Nullable<UpdateOrgInput>): Nullable<UpdateOrg> | Promise<Nullable<UpdateOrg>>;
     deleteOrg(orgName: string): Nullable<string> | Promise<Nullable<string>>;
